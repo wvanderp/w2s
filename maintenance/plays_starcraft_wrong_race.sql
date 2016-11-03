@@ -1,0 +1,1 @@
+select entity_id from claims where property = "P7" and not (value LIKE "%Q37%" or  value LIKE "%Q38%" or  value LIKE "%Q39%")
