@@ -164,7 +164,7 @@ foreach ($toDo as $entity) {
             $snak_type = mysqli_real_escape_string($link, $claim["mainsnak"]["snaktype"]);
             $property = mysqli_real_escape_string($link, $claim["mainsnak"]["property"]);
             $entity_type = mysqli_real_escape_string($link, $claim["mainsnak"]["datavalue"]["type"]);
-            $value = mysqli_real_escape_string($link, json_encode($claim["mainsnak"]["datavalue"]["value"]));
+            $value = mysqli_real_escape_string($link, json_encode($claim["mainsnak"]["datavalue"]["value"]["id"]));
 
             $claimsValues .= "('" . $wbid . "', '" . $entity_id . "', '" . $snak_type . "', '" . $property . "', '" . $entity_type . "', '" . $value . "'),";
 
