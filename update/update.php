@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$wdLink = mysqli_connect("localhost", "root", "password", "esdb") or die(mysqli_error($wdLink));
+$wdLink = mysqli_connect("localhost", "root", "password", "esportsdb") or die(mysqli_error($wdLink));
 $link = mysqli_connect("localhost", "root", "password", "w2s") or die(mysqli_error($link));
 
 $clearAll = [
