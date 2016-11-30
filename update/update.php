@@ -164,7 +164,19 @@ foreach ($toDo as $entity) {
             $snak_type = mysqli_real_escape_string($link, $claim["mainsnak"]["snaktype"]);
             $property = mysqli_real_escape_string($link, $claim["mainsnak"]["property"]);
             $entity_type = mysqli_real_escape_string($link, $claim["mainsnak"]["datavalue"]["type"]);
-            $value = mysqli_real_escape_string($link, json_encode($claim["mainsnak"]["datavalue"]["value"]["id"]));
+
+        switch ($entity_type) {
+            case "wikibase-entityid":
+                $value = mysqli_real_escape_string($link, $claim["mainsnak"]["datavalue"]["value"]["id"]);
+                break;
+            case "time":
+                $value = mysqli_real_escape_string($link, json_encode($claim["mainsnak"]["datavalue"]["value"]));
+                break;
+            default:
+                $value = mysqli_real_escape_string($link, $claim["mainsnak"]["datavalue"]["value"]) or var_dump($claim["mainsnak"]["datavalue"]["value"], $entity_type);;
+        }
+
+
 
             $claimsValues .= "('" . $wbid . "', '" . $entity_id . "', '" . $snak_type . "', '" . $property . "', '" . $entity_type . "', '" . $value . "'),";
 
